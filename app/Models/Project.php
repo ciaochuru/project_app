@@ -9,7 +9,8 @@ class Project extends Model
 {
     use HasFactory;
     
-    // public function getPaginateByLimit(int $limit = 5) {
-        
-    // }
+    protected $fillable = [
+            'title',
+            'body',
+        ];
 }

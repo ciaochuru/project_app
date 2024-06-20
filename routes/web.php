@@ -15,3 +15,5 @@ use App\Http\Controllers\ProjectController;
 */
 
 Route::get('/', [ProjectController::class, 'index']);
+Route::get('/projects/create', [ProjectController::class, 'create']);
+Route::post('/projects', [ProjectController::class, 'store']);

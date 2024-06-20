@@ -8,9 +8,12 @@
     </head>
     <body>
         <h1>ProjectApp</h1>
+        <p><a href="/projects/create">投稿作成</a></p>
         @foreach($projects as $project)
-            <h2>{{ $project->title }}</h2>
-            <p>{{ $project->body }}</p>
+            <div class="project">
+                <h2>{{ $project->title }}</h2>
+                <p>{{ $project->body }}</p>
+            </div>
         @endforeach
     </body>
 </html>

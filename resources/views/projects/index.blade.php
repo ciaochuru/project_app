@@ -11,7 +11,7 @@
         <p><a href="/projects/create">投稿作成</a></p>
         @foreach($projects as $project)
             <div class="project">
-                <h2>{{ $project->title }}</h2>
+                <h2><a href="/projects/{{ $project->id }}/show">{{ $project->title }}</h2></a>
                 <p>{{ $project->body }}</p>
             </div>
         @endforeach

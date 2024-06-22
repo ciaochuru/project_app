@@ -20,4 +20,8 @@ class ProjectController extends Controller
         $project->fill($input)->save();
         return redirect('/');
     }
+    
+    public function show (Project $project){
+        return view('projects.show')->with(['project' => $project]);
+    }
 }

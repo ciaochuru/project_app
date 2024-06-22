@@ -24,5 +24,8 @@
                 </div>
             </form>
         </div>
+        <div class="footer">
+            <a href="/">一覧に戻る</a>
+        </div>
     </body>
 </html>

@@ -17,4 +17,5 @@ use App\Http\Controllers\ProjectController;
 Route::get('/', [ProjectController::class, 'index']);
 Route::get('/projects/create', [ProjectController::class, 'create']);
 Route::post('/projects', [ProjectController::class, 'store']);
-Route::get('/projects/{project}/show', [ProjectController::class, 'show']);
+Route::get('/projects/{project}', [ProjectController::class, 'show']);
+Route::delete('/projects/{project}', [ProjectController::class, 'delete']);

@@ -24,4 +24,9 @@ class ProjectController extends Controller
     public function show (Project $project){
         return view('projects.show')->with(['project' => $project]);
     }
+    
+    public function delete (Project $project){
+        $project->delete();
+        return redirect('/');
+    }
 }

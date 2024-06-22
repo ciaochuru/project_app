@@ -8,7 +8,7 @@ use App\Models\Project;
 class ProjectController extends Controller
 {
     public function index (Project $project){
-        return view('projects.index')->with(['projects' => $project->get()]);
+        return view('projects.index')->with(['projects' => $project->getPaginate()]);
     }
     
     public function create (Project $project){

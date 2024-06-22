@@ -15,5 +15,8 @@
                 <p>{{ $project->body }}</p>
             </div>
         @endforeach
+        <div class="pagination">
+            {{ $projects->links('pagination::semantic-ui') }}
+        </div>
     </body>
 </html>

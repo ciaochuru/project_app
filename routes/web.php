@@ -16,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', [ProjectController::class, 'index']);
-    Route::get('/projects/create', [ProjectController::class, 'create']);
+    Route::get('/', [ProjectController::class, 'index'])->name('index');
+    Route::get('/projects/create', [ProjectController::class, 'create'])->name('create');
     Route::post('/projects', [ProjectController::class, 'store']);
     Route::get('/projects/{project}', [ProjectController::class, 'show']);
     Route::delete('/projects/{project}', [ProjectController::class, 'delete']);

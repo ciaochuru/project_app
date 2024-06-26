@@ -15,14 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth')->group(function () {
-    Route::get('/', [ProjectController::class, 'index'])->name('index');
-    Route::get('/projects/create', [ProjectController::class, 'create'])->name('create');
-    Route::post('/projects', [ProjectController::class, 'store']);
-    Route::get('/projects/{project}', [ProjectController::class, 'show']);
-    Route::delete('/projects/{project}', [ProjectController::class, 'delete']);
-});
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -31,6 +23,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/', [ProjectController::class, 'index'])->name('index');
+    Route::get('/projects/create', [ProjectController::class, 'create'])->name('create');
+    Route::post('/projects', [ProjectController::class, 'store']);
+    Route::post('/projects/search', [ProjectController::class, 'search'])->name('projects.search');
+    Route::get('/projects/{project}', [ProjectController::class, 'show']);
+    Route::delete('/projects/{project}', [ProjectController::class, 'delete']);
 });
 
 require __DIR__.'/auth.php';

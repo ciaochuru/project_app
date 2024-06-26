@@ -11,13 +11,18 @@ class Project extends Model
 {
     use HasFactory;
     
-   //ぺジネーション
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+    
+    //ぺジネーション
     public function getPaginate(int $limit_count = 5){
-        return $this->orderBy('updated_at', 'desc')->paginate(5);
+        return $this->orderBy('created_at', 'desc')->paginate(5);
     }
     
     protected $fillable = [
             'title',
             'body',
+            'user_id'
         ];
 }

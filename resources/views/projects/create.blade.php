@@ -7,7 +7,7 @@
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     </head>
     <body>
-        <h1>投稿</h1>
+        <h1>新規作成</h1>
         <div class="contents">
             <form method="POST" action="/projects">
                 @csrf

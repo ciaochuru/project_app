@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Project;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
@@ -16,8 +17,13 @@ class ProjectController extends Controller
     }
     
     public function store (Request $request, Project $project){
+        //ログインしているユーザーのidを取得
+        $user = Auth::id();
+        
         $input = $request['project'];
-        $project->fill($input)->save();
+        //$inputという配列に対してuser_idというkeyで$userという値を挿入する
+        $input['user_id'] = $user;
+        $project->fill($input)->save();//fillは配列でしか使えない,モデルでfillableをかいておく
         return redirect('/');
     }
     
@@ -40,9 +46,10 @@ class ProjectController extends Controller
         //$keywordが空でない場合、検索を実行
         if(!empty($keyword)){
             $posts = Project::where('title', 'LIKE', "%${keyword}%")
-                            ->orWhere('body', 'LIKE', "%${keyword}%")->paginate(5);
+                            ->orWhere('body', 'LIKE', "%${keyword}%")
+                            ->orderBy('created_at', 'DESC')->paginate(1);
         }else{
-            $posts = $projects->orderBy('created_at', 'DESC')->paginate(5);
+            $posts = $projects->orderBy('created_at', 'DESC')->paginate(1);
         }
         
         //検索を実行して、viewに検索データを渡し表示

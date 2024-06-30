@@ -6,21 +6,21 @@
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        
     </head>
     <body>
-        <h1>ProjectApp</h1>
+        <h1><a href="/">ProjectApp</a></h1>
         <div class="search_form">
-            <form action="{{ route('projects.search') }}" method="POST">
-                @csrf
+            <form action="{{ route('projects.search') }}" method="GET">
                 <div class="container">
                 	<div class="row">
                         <div class="col-md-6">
                     		<h2>検索</h2>
                             <div id="custom-search-input">
                                 <div class="input-group col-md-12">
-                                    <input type="text" class="form-control input-lg" placeholder="キーワードを入力" name="keyword"/>
+                                    <input type="text" class="form-control input-lg" placeholder="キーワードを入力" value="{{ request('keyword') }}" name="keyword"/>
                                     <span class="input-group-btn">
                                         <button class="btn btn-info btn-lg" type="submit">
                                             <i class="glyphicon glyphicon-search"></i>
@@ -36,12 +36,15 @@
         <p><a href="/projects/create">新規作成</a></p>
         @foreach($projects as $project)
             <div class="project">
-                <h2><a href="/projects/{{ $project->id }}">{{ $project->title }}</h2></a>
+                <h2><a href="/projects/{{ $project->id }}">{{ $project->title }}</a></h2>
                 <p>{{ $project->body }}</p>
+            </div>
+            <div class="post_user">
+                {{ $project->user->name }}
             </div>
         @endforeach
         <div class="pagination">
-            {{ $projects->links('pagination::semantic-ui') }}
+            {{ $projects->links() }}
         </div>
     </body>
 </html>

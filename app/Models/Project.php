@@ -17,7 +17,7 @@ class Project extends Model
     
     //ぺジネーション
     public function getPaginate(int $limit_count = 5){
-        return $this->orderBy('created_at', 'desc')->paginate(5);
+        return $this->orderBy('created_at', 'desc')->paginate($limit_count);
     }
     
     protected $fillable = [

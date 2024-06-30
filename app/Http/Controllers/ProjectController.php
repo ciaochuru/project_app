@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
@@ -12,13 +14,22 @@ class ProjectController extends Controller
     }
     
     public function create (Project $project){
-        return view('projects.create')->with(['projects' => $project->get()]);
+        return view('projects.create')->with(['project' => $project->get()]);
     }
     
-    public function store (Request $request, Project $project){
+    public function store (ProjectRequest $request, Project $project){
+        //ログインしているユーザーのidを取得
+        $user = Auth::id();
+        
         $input = $request['project'];
-        $project->fill($input)->save();
+        //$inputという配列に対してuser_idというkeyで$userという値を挿入する
+        $input['user_id'] = $user;
+        $project->fill($input)->save();//fillは配列でしか使えない,モデルでfillableをかいておく
         return redirect('/');
+    }
+    
+    public function edit(){
+        
     }
     
     public function show (Project $project){
@@ -30,7 +41,7 @@ class ProjectController extends Controller
         return redirect('/');
     }
     
-    public function search(Request $request){
+    public function search(ProjectRequest $request){
         //テーブルからすべてのレコードを取得
         $projects = Project::query();
         
@@ -40,7 +51,9 @@ class ProjectController extends Controller
         //$keywordが空でない場合、検索を実行
         if(!empty($keyword)){
             $posts = Project::where('title', 'LIKE', "%${keyword}%")
-                            ->orWhere('body', 'LIKE', "%${keyword}%")->paginate(5);
+                            ->orWhere('body', 'LIKE', "%${keyword}%")
+                            ->orderBy('created_at', 'DESC')->paginate(5)
+                            ->appends(['keyword' => $keyword]);//paginateをするときはappends()でリクエストパラメータで送られてきたデータを取得する
         }else{
             $posts = $projects->orderBy('created_at', 'DESC')->paginate(5);
         }

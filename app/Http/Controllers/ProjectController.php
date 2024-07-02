@@ -33,7 +33,7 @@ class ProjectController extends Controller
     }
     
     public function show (Project $project){
-        return view('projects.show')->with(['project' => $project]);
+        return view('projects.show')->with(['project' => $project, 'comments' => $project->comments]);
     }
     
     public function delete (Project $project){

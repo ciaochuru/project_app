@@ -9,7 +9,7 @@
     <body>
         <h1>新規作成</h1>
         <div class="contents">
-            <form method="POST" action="/projects">
+            <form method="POST" action="{{ route('projects.store') }}">
                 @csrf
                 <div class="content_title">
                     <h2>プロジェクト名：</h2>

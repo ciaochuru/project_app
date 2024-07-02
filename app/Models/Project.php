@@ -15,6 +15,10 @@ class Project extends Model
         return $this->belongsTo(User::class);
     }
     
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+    
     //ぺジネーション
     public function getPaginate(int $limit_count = 5){
         return $this->orderBy('created_at', 'desc')->paginate($limit_count);

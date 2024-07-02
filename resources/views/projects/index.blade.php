@@ -33,11 +33,11 @@
                 </div>
             </form>
         </div>
-        <p><a href="/projects/create">新規作成</a></p>
+        <p><a href="{{ route('projects.create') }}">新規作成</a></p>
         @foreach($projects as $project)
             <div class="project">
                 <h2><a href="/projects/{{ $project->id }}">{{ $project->title }}</a></h2>
-                <p>{{ $project->body }}</p>
+                <h3>{{ $project->body }}</h3>
             </div>
             <div class="post_user">
                 {{ $project->user->name }}

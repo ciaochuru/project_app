@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,11 +28,13 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [ProjectController::class, 'index'])->name('index');
-    Route::get('/projects/create', [ProjectController::class, 'create'])->name('create');
+    Route::get('/projects/create', [ProjectController::class, 'create'])->name('projects.create');
     Route::get('/projects/search', [ProjectController::class, 'search'])->name('projects.search');
+    Route::get('/comments/create/{project}', [CommentController::class, 'create'])->name('comments.create');
     Route::get('/projects/{project}', [ProjectController::class, 'show']);
-    Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('edit');
-    Route::post('/projects', [ProjectController::class, 'store']);
+    Route::get('/projects/{project}/edit', [ProjectController::class, 'edit']);
+    Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
+    Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
     Route::delete('/projects/{project}', [ProjectController::class, 'delete']);
 });
 

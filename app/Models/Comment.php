@@ -13,8 +13,13 @@ class Comment extends Model
         return $this->belongsTo(Project::class);
     }
     
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+    
     protected $fillable = [
             'comment',
-            'project_id'
+            'project_id',
+            'user_id'
         ];
 }

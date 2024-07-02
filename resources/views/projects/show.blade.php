@@ -7,6 +7,9 @@
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     </head>
     <body>
+        <div class="user">
+            投稿者：{{ $project->user->name }}
+        </div>
         <div class="show_project">
             <h1>{{ $project->title }}</h1>
             <p>{{ $project->body }}</p>
@@ -18,6 +21,7 @@
             <h2>コメント</h2>
             @foreach($comments as $comment)
                 <p>{{ $comment->comment }}</p>
+                ユーザー：{{ $comment->user->name }}
             @endforeach
         </div>
         <div class="footer">

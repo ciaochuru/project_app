@@ -40,7 +40,7 @@
                 <h3>{{ $project->body }}</h3>
             </div>
             <div class="post_user">
-                {{ $project->user->name }}
+                投稿者：{{ $project->user->name }}
             </div>
         @endforeach
         <div class="pagination">

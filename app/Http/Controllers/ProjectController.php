@@ -28,8 +28,14 @@ class ProjectController extends Controller
         return redirect('/');
     }
     
-    public function edit(){
-        
+    public function edit(Project $project){
+        return view('projects.edit')->with(['project' => $project]);
+    }
+    
+    public function update(ProjectRequest $request, Project $project){
+        $input = $request['project'];
+        $project->fill($input)->save();
+        return redirect('/projects/' . $project->id);
     }
     
     public function show (Project $project){

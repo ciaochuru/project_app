@@ -37,11 +37,13 @@ Route::middleware('auth')->group(function () {
     
     Route::get('/projects/{project}', [ProjectController::class, 'show']);
     
-    Route::get('/projects/{project}/edit', [ProjectController::class, 'edit']);
+    Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
     
     Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
     
     Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
+    
+    Route::put('/projects/{project}', [ProjectController::class, 'update'])->name('projects.update');
     
     Route::delete('/projects/{project}', [ProjectController::class, 'delete']);
 });

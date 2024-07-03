@@ -10,6 +10,9 @@
         <div class="user">
             投稿者：{{ $project->user->name }}
         </div>
+        <div class="edit">
+            <a href="/projects/{{ $project->id }}/edit">投稿を編集</a>
+        </div>
         <div class="show_project">
             <h1>{{ $project->title }}</h1>
             <p>{{ $project->body }}</p>

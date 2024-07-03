@@ -9,18 +9,19 @@
     <body>
         <h1>編集</h1>
         <div class="contents">
-            <form method="PUT" action="/projects">
+            <form method="POST" action="/projects/{{ $project->id }}">
                 @csrf
+                @method("PUT")
                 <div class="content_title">
                     <h2>プロジェクト名：</h2>
-                    <input type="text" name=project[title] placeholder="タイトルを入力" />
+                    <input type="text" name=project[title] placeholder="タイトルを入力" value="{{ $project->title }}" />
                 </div>
                 <div class="title_error">
                     <p class="title_error" style="color:red">{{ $errors->first('project.title') }}</p>
                 </div>
                 <div class="content_body">
                     <h2>概要:</h2>
-                    <textarea name="project[body]" placeholder="プロジェクトの概要"></textarea>
+                    <textarea name="project[body]" placeholder="プロジェクトの概要">{{ $project->body }}</textarea>
                 </div>
                 <div class="body_error">
                     <p class="body_error" style="color:red">{{ $errors->first('project.body') }}</p>

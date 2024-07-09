@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
@@ -13,18 +14,23 @@ class ProjectController extends Controller
         return view('projects.index')->with(['projects' => $project->getPaginate()]);
     }
     
-    public function create (Project $project){
-        return view('projects.create')->with(['project' => $project->get()]);
+    public function create (Project $project, Tag $tag){
+        return view('projects.create')->with(['projects' => $project->get(), 'tags' => $tag->get()]);
     }
     
     public function store (ProjectRequest $request, Project $project){
         //ログインしているユーザーのidを取得
         $user = Auth::id();
         
-        $input = $request['project'];
+        $input_project = $request['project'];
+        $input_tags = $request->tags_array;//tags_arrayはviewで指定したname属性
+        
         //$inputという配列に対してuser_idというkeyで$userという値を挿入する
-        $input['user_id'] = $user;
-        $project->fill($input)->save();//fillは配列でしか使えない,モデルでfillableをかいておく
+        $input_project['user_id'] = $user;
+        //プロジェクトのtitle,bodyを保存
+        $project->fill($input_project)->save();//fillは配列でしか使えない,モデルでfillableをかいておく
+        //タグの保存
+        $project->tags()->attach($input_tags);
         return redirect('/');
     }
     

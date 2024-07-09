@@ -39,6 +39,11 @@
                 <h2><a href="/projects/{{ $project->id }}">{{ $project->title }}</a></h2>
                 <h3>{{ $project->body }}</h3>
             </div>
+            <div class="tag">
+                @foreach($project->tags as $tag)
+                    <h4>{{ $tag->tag_name }}</h4>
+                @endforeach
+            </div>
             <div class="post_user">
                 投稿者：{{ $project->user->name }}
             </div>

@@ -26,26 +26,28 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware('auth')->group(function () {
-    Route::get('/', [ProjectController::class, 'index'])->name('index');
+Route::controller(ProjectController::class)->middleware(['auth'])->group(function(){
+    Route::get('/', 'index')->name('index');
     
-    Route::get('/projects/create', [ProjectController::class, 'create'])->name('projects.create');
+    Route::get('/projects/create', 'create')->name('projects.create');
     
-    Route::get('/projects/search', [ProjectController::class, 'search'])->name('projects.search');
+    Route::get('/projects/search', 'search')->name('projects.search');
     
-    Route::get('/comments/create/{project}', [CommentController::class, 'create'])->name('comments.create');
+    Route::get('/projects/{project}', 'show');
     
-    Route::get('/projects/{project}', [ProjectController::class, 'show']);
+    Route::get('/projects/{project}/edit', 'edit')->name('projects.edit');
     
-    Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
+    Route::post('/projects', 'store')->name('projects.store');
     
-    Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
+    Route::put('/projects/{project}', 'update')->name('projects.update');
     
-    Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
+    Route::delete('/projects/{project}', 'delete');
+});
+
+Route::controller(CommentController::class)->middleware(['auth'])->group(function(){
+    Route::get('/comments/create/{project}', 'create')->name('comments.create');
     
-    Route::put('/projects/{project}', [ProjectController::class, 'update'])->name('projects.update');
-    
-    Route::delete('/projects/{project}', [ProjectController::class, 'delete']);
+    Route::post('/comments', 'store')->name('comments.store');
 });
 
 require __DIR__.'/auth.php';

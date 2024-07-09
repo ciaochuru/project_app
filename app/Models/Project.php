@@ -19,6 +19,10 @@ class Project extends Model
         return $this->hasMany(Comment::class);
     }
     
+    public function tags(){
+        return $this->belongsToMany(Tag::class);
+    }
+    
     //ぺジネーション
     public function getPaginate(int $limit_count = 5){
         return $this->orderBy('created_at', 'desc')->paginate($limit_count);

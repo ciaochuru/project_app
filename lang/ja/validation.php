@@ -257,6 +257,8 @@ return [
         'username' => 'ユーザー名',
         'year' => '年',
         'comment.comment' => 'コメント',
+        'project.title' => 'プロジェクト名',
+        'project.body' => '概要'
     ],
 
 ];

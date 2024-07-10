@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ApplicationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,6 +49,12 @@ Route::controller(CommentController::class)->middleware(['auth'])->group(functio
     Route::get('/comments/create/{project}', 'create')->name('comments.create');
     
     Route::post('/comments', 'store')->name('comments.store');
+});
+
+Route::controller(ApplicationController::class)->middleware(['auth'])->group(function(){
+    Route::get('/apps', 'list')->name('apps.list');
+    
+    Route::get('/apps/create', 'create')->name('apps.create');
 });
 
 require __DIR__.'/auth.php';

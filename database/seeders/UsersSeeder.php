@@ -16,7 +16,7 @@ class UsersSeeder extends Seeder
     public function run()
     {
         // DB::table('users')->insert([
-        
+            
         // ]);
     }
 }

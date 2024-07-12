@@ -34,6 +34,9 @@
                 @method("DELETE")
                 <input type="button" onclick="deleteProject({{ $project->id }})" value="投稿を削除" />
             </form>
+        <div class="deliverables">
+            <p><a href="{{ route('apps.create', ['project' => $project->id]) }}">成果物投稿</a></p>
+        </div>
         </div>
             <a href="/">一覧に戻る</a>
         </div>

@@ -9,8 +9,9 @@
     <body>
         <h1>成果物投稿</h1>
         <div class="contents">
-            <form method="POST" action="">
+            <form method="POST" action="{{ route('apps.store') }}">
                 @csrf
+                <input name="app[project_id]" type="hidden" value="{{ $project->id }}"/>
                 <div class="content_title">
                     <h2>プロジェクト名：</h2>
                     <input type="text" name="app[title]" placeholder="プロジェクト名を入力" value="{{ old('app.title') }}" />
@@ -35,7 +36,7 @@
             </form>
         </div>
         <div class="footer">
-            <a href="/">一覧に戻る</a>
+            <a href="{{ route('apps.list') }}">成果物一覧に戻る</a>
         </div>
     </body>
 </html>

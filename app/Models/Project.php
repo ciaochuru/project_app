@@ -23,6 +23,10 @@ class Project extends Model
         return $this->belongsToMany(Tag::class);
     }
     
+    public function application(){
+        return $this->hasOne(Application::class);
+    }
+    
     //ぺジネーション
     public function getPaginate(int $limit_count = 5){
         return $this->orderBy('created_at', 'desc')->paginate($limit_count);

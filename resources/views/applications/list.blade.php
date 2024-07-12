@@ -11,7 +11,7 @@
         
     </head>
     <body>
-        <h1><a href="/">ProjectApp</a></h1>
+        <h1><a href="{{ route('apps.list') }}">完成プロジェクト一覧</a></h1>
         <div class="search_form">
             <form action="{{ route('apps.list') }}" method="GET">
                 <div class="container">
@@ -33,11 +33,12 @@
                 </div>
             </form>
         </div>
-        <p><a href="{{ route('apps.create') }}">新規作成</a></p>
+        <p><a href="{{ route('index') }}">新規プロジェクト発案</a></p>
         @foreach($apps as $app)
             <div class="app">
-                <h2><a href="/projects/{{ $app->id }}">{{ $app->title }}</a></h2>
+                <h2><a href="/apps/{{$app->id}}/show">{{ $app->title }}</a></h2>
                 <h3>{{ $app->explain }}</h3>
+                <h3><a href={{ $app->app_url }}>{{ $app->app_url }}<a/></h3>
             </div>
         @endforeach
         <div class="pagination">

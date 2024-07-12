@@ -54,7 +54,11 @@ Route::controller(CommentController::class)->middleware(['auth'])->group(functio
 Route::controller(ApplicationController::class)->middleware(['auth'])->group(function(){
     Route::get('/apps', 'list')->name('apps.list');
     
-    Route::get('/apps/create', 'create')->name('apps.create');
+    Route::get('/apps/{app}/show', 'show')->name('apps.show');
+    
+    Route::get('/apps/create/{project}', 'create')->name('apps.create');
+    
+    Route::post('/apps', 'store')->name('apps.store');
 });
 
 require __DIR__.'/auth.php';

@@ -11,9 +11,15 @@ class Application extends Model
     use HasFactory;
     
     protected $fillable = [
+            'project_id',
+            'title',
             'explain',
             'app_url'
         ];
+        
+    public function project(){
+        return $this->hasOne(Project::class);
+    }
     
     //ぺジネーション
     public function getPaginate(int $limit_count = 5){

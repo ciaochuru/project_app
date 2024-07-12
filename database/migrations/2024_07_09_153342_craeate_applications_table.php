@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('title', 50);
             $table->text('explain', 140);
             $table->string('app_url');
+            $table->timestamps();
         });
     }
 

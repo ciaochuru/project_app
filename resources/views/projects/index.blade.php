@@ -33,6 +33,7 @@
                 </div>
             </form>
         </div>
+        <p><a href="{{ route('apps.list') }}">完成プロジェクト一覧</a></p>
         <p><a href="{{ route('projects.create') }}">新規作成</a></p>
         @foreach($projects as $project)
             <div class="project">

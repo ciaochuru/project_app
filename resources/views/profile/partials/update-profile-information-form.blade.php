@@ -16,8 +16,11 @@
     <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
         @method('patch')
-        
+        <x-input-label for="user_icon" value="アイコン" />
         <div class="image">
+            <x-user-icon>
+                    <image src="{{ $user->image_path }}" alt="アイコン" />
+            </x-user-icon>
             <input type="file" name="image" value="プロフィール画像を選択"/>
         </div>
         

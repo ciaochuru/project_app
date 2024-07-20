@@ -36,6 +36,12 @@
         <p><a href="{{ route('apps.list') }}">完成プロジェクト一覧</a></p>
         <p><a href="{{ route('projects.create') }}">新規作成</a></p>
         @foreach($projects as $project)
+            <div class="post_user">
+                <x-user-icon>
+                    <img src="{{ $project->user->image_path }}" alt="アイコン" />
+                </x-user-icon>
+                {{ $project->user->name }}
+            </div>
             <div class="project">
                 <h2><a href="/projects/{{ $project->id }}">{{ $project->title }}</a></h2>
                 <h3>{{ $project->body }}</h3>
@@ -44,9 +50,6 @@
                 @foreach($project->tags as $tag)
                     <h4>{{ $tag->tag_name }}</h4>
                 @endforeach
-            </div>
-            <div class="post_user">
-                投稿者：{{ $project->user->name }}
             </div>
         @endforeach
         <div class="pagination">

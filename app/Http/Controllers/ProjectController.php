@@ -53,7 +53,7 @@ class ProjectController extends Controller
         return redirect('/');
     }
     
-    public function search(ProjectRequest $request){
+    public function search(Request $request){
         //テーブルからすべてのレコードを取得
         $projects = Project::query();
         

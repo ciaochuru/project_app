@@ -11,7 +11,7 @@
         
     </head>
     <body>
-        <h1><a href="{{ route('apps.list') }}">完成プロジェクト一覧</a></h1>
+        <h1><a href="{{ route('apps.list') }}">成果物一覧</a></h1>
         <div class="search_form">
             <form action="{{ route('apps.list') }}" method="GET">
                 <div class="container">

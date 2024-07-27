@@ -19,7 +19,8 @@ main {
     padding: 20px 20px;
     border-right: solid 2px #EEEEEE;
     border-left: solid 2px #EEEEEE;
-    border-bottom: solid 3px #EEEEEE;
+    border-top: solid 1.5px #EEEEEE;
+    border-bottom: solid 1.5px #EEEEEE;
     left: 370px;
 }
 
@@ -42,4 +43,17 @@ main {
 
 .tag span{
     padding-right: 1rem;
+}
+
+.pagination {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    top: 645px;
+    left: 1045px;
+    
+}
+
+.page-item {
+    padding-left: 15px
 }

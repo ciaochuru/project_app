@@ -1,0 +1,45 @@
+body {
+    background-color: #fffdfa;
+}
+
+main {
+    position: relative;
+    width: 33rem;
+    height: auto;
+    left: 500px;
+}
+
+.create p{
+    position: fixed;
+    left: 310px;
+    top: 35px;
+}
+
+.project {
+    padding: 20px 20px;
+    border-right: solid 2px #EEEEEE;
+    border-left: solid 2px #EEEEEE;
+    border-bottom: solid 3px #EEEEEE;
+    left: 370px;
+}
+
+.search_form {
+    position: relative;
+    left: 85%;
+}
+
+.post_user {
+    display: inline;
+}
+
+.project_title {
+    display: inline;
+}
+
+.tag h5 {
+    display: inline-block;
+}
+
+.tag span{
+    padding-right: 1rem;
+}

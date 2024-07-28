@@ -42,10 +42,12 @@
                         <h3>{{ $project->body }}</h3>
                     </div>
                     <div class="tag">
-                        <h5>タグ：</h5>
-                        @foreach($project->tags as $tag)
-                            <h5><span>{{ $tag->tag_name }}</span></h5>
-                        @endforeach
+                        @if($project->tags->isNotEmpty())
+                            <h5>タグ：</h5>
+                            @foreach($project->tags as $tag)
+                                <h5><span>{{ $tag->tag_name }}</span></h5>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             @endforeach
